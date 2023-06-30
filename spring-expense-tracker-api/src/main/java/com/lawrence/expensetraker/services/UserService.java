@@ -7,6 +7,9 @@ public interface UserService {
     User createUser(UserDto user);
     User readUser();
     User updateUser();
+
+    User updateUser(UserDto user);
+
     void deleteUser();
     User getLoggedInUser();
 }

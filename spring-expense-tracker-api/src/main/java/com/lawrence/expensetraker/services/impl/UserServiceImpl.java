@@ -1,6 +1,5 @@
 package com.lawrence.expensetraker.services.impl;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.lawrence.expensetraker.dto.UserDto;
 import com.lawrence.expensetraker.entity.User;
 import com.lawrence.expensetraker.exceptions.ItemExistsException;
@@ -8,7 +7,9 @@ import com.lawrence.expensetraker.exceptions.ResourceNotFoundException;
 import com.lawrence.expensetraker.repository.UserRepository;
 import com.lawrence.expensetraker.services.UserService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
 
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
     public User readUser() {
         Long userId = getLoggedInUser().getId();
         return userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User not found for the id: "+userId));
+    }
+
+    @Override
+    public User updateUser() {
+        return null;
     }
 
     @Override
