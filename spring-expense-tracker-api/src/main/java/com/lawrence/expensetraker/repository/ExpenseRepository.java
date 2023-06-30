@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Optional;
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
-    Page<Expense> findByUseIdAndCategory(Long userId, String category, Pageable pageable);
+    Page<Expense> findByUserIdAndCategory(Long userId, String category, Pageable pageable);
     Page<Expense> findByUserIdAndDateBetween(Long userId, Date startDate, Date endDate, Pageable page);
     Page<Expense> findByUserIdAndNameContaining(Long userId, String keyword, Pageable page);
 

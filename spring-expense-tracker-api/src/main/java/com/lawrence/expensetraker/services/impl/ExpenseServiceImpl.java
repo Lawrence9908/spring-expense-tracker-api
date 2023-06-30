@@ -8,11 +8,12 @@ import com.lawrence.expensetraker.services.ExpenseService;
 import com.lawrence.expensetraker.services.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ExpenseServiceImpl implements ExpenseService {
     private ExpenseRepository expenseRepository;
     private UserService userService;
@@ -65,7 +66,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<Expense> readByCategory(String category, Pageable page) {
-        return expenseRepository.findByUseIdAndCategory(userService.getLoggedInUser().getId(),
+        return expenseRepository.findByUserIdAndCategory(userService.getLoggedInUser().getId(),
                 category, page).toList();
     }
 
